@@ -4,6 +4,21 @@ function createCertificate() {
   var teacher = document.getElementById('teacher').value;
   var course = document.getElementById('course').value;
 
+  const regexForName = /^([А-ЯЇІЄ]{1,1})([а-яїіє]{2,15})+\s([А-ЯЇІЄ]{1,1})([а-яїіє]{2,15})+\s([А-ЯЇІЄ]{1,1})([а-яїіє]{2,15})+$/;
+  if (regexForName.test(fullname)) {
+    console.log("ПІБ введено правильно");
+  } else {
+    alert("ПІБ введено неправильно")
+    return;
+  }
+
+  const regexForTeacher = /^([А-ЯЇІЄ]{1,1})([а-яїіє]{2,15})+\s([А-ЯЇІЄ]{1,1}\.)+\s([А-ЯЇІЄ]{1,1}\.)+$/;
+  if (regexForTeacher.test(teacher)) {
+    console.log("Прізвище та ініціали викладача введено правильно");
+  } else {
+    alert("Прізвище та ініціали викладача введено неправильно")
+    return;
+  }
 
   const canvasContainer = document.createElement('div');
   canvasContainer.classList.add('canvas-container');
@@ -49,7 +64,7 @@ function createCertificate() {
     canvas.add(fullnameText);
 
     var teacherText = new fabric.Text(teacher, {
-      left: 435,
+      left: 430,
       top: 560,
       fontSize: 30,
       fill: 'black'
